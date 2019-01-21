@@ -37,14 +37,18 @@ I used a switch with "cases" and corresponding functions to create the four sepa
 
 ![Image 1](./images/img1.png)
 
-Instrucions
+Instructions
 
 For LIRI to execute your orders, you need to write: node liri.js followed by one of the 4 commands (see example below). 
 
 concert-this  
+
 spotify-this-song
+
 movie-this
+
 do-what-it-says
+
 
 
 
@@ -61,9 +65,13 @@ You will see the results like this:
 Examples:
 
 node liri.js concert-this "Metallica"
+
 node liri.js spotify-this-song "Fear of the dark"
+
 node liri.js movie-this "The rock"
+
 node liri.js do-what-it-says
+
 
 *Don't forget to write your search inside single or double quotes*
 
