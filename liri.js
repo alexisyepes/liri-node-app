@@ -49,7 +49,22 @@ function concertThis() {
                 for (let i = 0; i < bandReturn.length; i++) {
                     var event = bandReturn[i]
                     console.log("**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + 
-                    "\n" + artist + "\nVenue: " + event.venue.name + "\nCity: " + event.venue.city + "\nDate: " + moment(event.datetime).format("MM/DD/YYYY"))
+                    "\n" + artist + "\nVenue: " + event.venue.name + "\nCity: " + event.venue.city + "\nDate: " + moment(event.datetime).format("MM/DD/YYYY"));
+
+                    var textResults = "**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + 
+                    "\n" + artist + "\nVenue: " + event.venue.name + "\nCity: " + event.venue.city + "\nDate: " + moment(event.datetime).format("MM/DD/YYYY") + "\n";
+
+                    fs.appendFile("log.txt", textResults, function(err) {
+
+                        if (err) {
+                          console.log("Error: "+ err);
+                        }
+            
+                        else {
+                          console.log("Content added to log.txt");
+                        }
+                      
+                      });
                 }
             }
         });
@@ -81,6 +96,17 @@ function spotifyThisSong(songName) {
                         console.log("**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + "\n" +
                         + "\n" + spotifyResults);
                         console.log(' ');
+                        fs.appendFile("log.txt", "\n" + "**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + "\n" + spotifyResults + "\n", function(err) {
+
+                            if (err) {
+                              console.log("Error: "+ err);
+                            }
+                
+                            else {
+                              console.log("Content added to log.txt");
+                            }
+                          
+                          });
                     };
                 };
             } else {
@@ -117,6 +143,17 @@ function movieThis() {
 
             console.log("**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + "\n" +
             queryUrlResults);
+            fs.appendFile("log.txt","\n" + "**********************LIRI FOUND THESE RESULTS FOR YOU**********************" + "\n" + queryUrlResults + "\n", function(err) {
+
+                if (err) {
+                  console.log("Error: "+ err);
+                }
+    
+                else {
+                  console.log("Content added to log.txt");
+                }
+              
+              });
         } else {
             console.log("error: " + err);
             return;
@@ -126,7 +163,7 @@ function movieThis() {
 
 function doWhatItSays() {
 
-    fs.writeFile("random.txt", 'spotify-this-song,"I want it this way"', function (err) {
+    fs.writeFile("random.txt", 'spotify-this-song, "I want it this way"', function (err) {
         var song = "spotify-this-song 'I want it this way'"
 
         if (err) {
@@ -134,8 +171,21 @@ function doWhatItSays() {
         };
 
         console.log(song);
+        fs.appendFile("log.txt", "\n" + song + "\n", function(err) {
+
+            if (err) {
+              console.log("Error: "+ err);
+            }
+
+            else {
+              console.log("Content added to log.txt");
+            }
+          
+          });
     });
 };
+
+
 
 
 
